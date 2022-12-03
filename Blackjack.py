@@ -6,13 +6,18 @@ cards_52 = cards_13 * 4
 
 print('Welcome to Blackjack!\n')
 
-total_money = input('How much money are you willing to play with? \n')
+total_money = int(input('How much money are you willing to play with? \n'))
+if total_money < 1:
+    print('Are you trying to waste my time! Get out!')
+    exit()
 
 while True:
     bet_amount = int(input('How much would you like to bet?\n'))
-    total_money = int(total_money)
+    if bet_amount < 1:
+        print('Are you trying to waste my time! Get out!')
+        break
     while bet_amount > total_money:
-        print("Don't be cheeky you are broke and can't afford that. Try again.")
+        print("Don't be cheeky! You are broke and can't afford that. Try again.")
         bet_amount = int(input('How much would you like to bet?\n'))
 
     comp_cards = []
@@ -112,6 +117,9 @@ while True:
             break
         else:
             total_money = int(input('Welcome back! How much money do you have now? \n'))
+            if total_money < 1:
+                print('Are you trying to waste my time! Get out!')
+                break
             total = total_money
     else:
         play_again = input('Play again? Y or N: \n')
